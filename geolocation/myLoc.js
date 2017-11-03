@@ -1,5 +1,6 @@
 window.onload = getMyLocation;
 
+var watchId = null;
 var ourCoords = {
   latitude: 47.624851,
   longitude: -122.52099
@@ -7,9 +8,23 @@ var ourCoords = {
 
 function getMyLocation() {
   if(navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(displayLocation, displayError);
+    var watchButton = document.getElementById("watch");
+    watchButton.onclick = watchLocation;
+    var clearWatchButton = document.getElementById("clearWatch");
+    clearWatchButton.onclick = clearWatch;
   } else {
     alert("Oops, no geolocation support");
+  }
+}
+
+function watchLocation() {
+  watchId = navigator.geolocation.watchPosition(displayLocation, displayError);
+}
+
+function clearWatch() {
+  if(watchId) {
+    navigator.geolocation.clearWatch(watchId);
+    watchId = null;
   }
 }
 
@@ -25,7 +40,9 @@ function displayLocation(position) {
   var distance = document.getElementById("distance");
   distance.innerHTML = "You are " + km + " km from the WickedlySmart HQ";
   
-  showMap(position.coords);
+  if(map == null) {
+    showMap(position.coords);
+  }
 }
 
 function displayError(error) {
