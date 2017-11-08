@@ -1,4 +1,4 @@
-var options = { enableHighAccuracy: true, timeout: 100, maximumAge: 0 };
+var options = { enableHighAccuracy: true };
 
 window.onload = getMyLocation;
 
@@ -10,7 +10,7 @@ var ourCoords = {
 
 function getMyLocation() {
   if(navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(displayLocation, displayError, options);
+  // navigator.geolocation.getCurrentPosition(displayLocation, displayError, options);
     var watchButton = document.getElementById("watch");
     watchButton.onclick = watchLocation;
     var clearWatchButton = document.getElementById("clearWatch");
@@ -21,7 +21,7 @@ function getMyLocation() {
 }
 
 function watchLocation() {
-  watchId = navigator.geolocation.watchPosition(displayLocation, displayError, {timeout: 5000});
+  watchId = navigator.geolocation.watchPosition(displayLocation, displayError, options);
 }
 
 function clearWatch() {
@@ -38,7 +38,7 @@ function displayLocation(position) {
   var div = document.getElementById("location");
   div.innerHTML = "You are at Latitude: " + latitude + ", Longitude: " + longitude;
   div.innerHTML += " (with " + position.coords.accuracy + " metres accuracy)";
-  div.innerHTML += " (found in " + options.timeout + " milliseconds)";
+  // div.innerHTML += " (found in " + options.timeout + " milliseconds)";
   
   var km = computeDistance(position.coords, ourCoords);
   var distance = document.getElementById("distance");
@@ -46,6 +46,8 @@ function displayLocation(position) {
   
   if(map == null) {
     showMap(position.coords);
+  } else {
+    scrollMapToPosition(position.coords);
   }
 }
 
@@ -62,9 +64,9 @@ function displayError(error) {
   }
   var div  = document.getElementById("location");
   div.innerHTML = errorMessage;
-  options.timeout += 100;
+  /* options.timeout += 100;
   navigator.geolocation.getCurrentPosition(displayLocation, displayError, options);
-  div.innerHTML += " ... checking again with timeout=" + options.timeout;
+  div.innerHTML += " ... checking again with timeout=" + options.timeout; */
 }
 
 function computeDistance(startCoords, destCoords) {
@@ -124,3 +126,12 @@ function addMarker(map, latlong, title, content) {
   });
 }
 
+function scrollMapToPosition(coords) {
+  var latitude = coords.latitude;
+  var longitude = coords.longitude;
+  var latlong = new google.maps.LatLng(latitude, longitude);
+  
+  map.panTo(latlong);
+  
+  addMarker(map, latlong, "Your new location", "You moved to: " + latitude + ", " + longitude);
+}
