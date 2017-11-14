@@ -7,6 +7,7 @@ window.onload = function() {
       updateSales(request.responseText);
     }
   };
+  request.send(null);
 }
 
 function updateSales(responseText) {
