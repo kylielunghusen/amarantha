@@ -13,14 +13,14 @@ $connection = new tmhOAuth(array(
 ));
 // Get the timeline with the Twitter API
 $http_code = $connection->request('GET',
-    $connection->url('2.2/search/tweets'),
+    $connection->url('1.1/search/tweets'),
     array('q' => $query, 'count' => 10, 'lang' => 'en'));
 // Request was successful
 if ($http_code == 200) {
     // Extract the tweets from the API response
     $response = json_decode($connection->response['response'],true);
     $tweet_data = $response['statuses'];
-    
+
     // Accumulate tweets from results
     $tweet_stream = '[';
     foreach ($tweet_data as $tweet) {
@@ -29,7 +29,7 @@ if ($http_code == 200) {
     }
     $tweet_stream = substr($tweet_stream, 0, -1);
     $tweet_stream .= ']';
-    // Sent the tweets back to the Ajax request
+    // Send the tweets back to the Ajax request
     print $tweet_stream;
 }
 // Handle errors from API request
@@ -40,6 +40,6 @@ else {
     else {
         print 'Error: Twitter was not able to process that request';
     }
-}
+} 
 ?>
 
