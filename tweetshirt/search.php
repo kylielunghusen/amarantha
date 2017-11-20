@@ -1,7 +1,7 @@
 <?php
 require 'app_tokens.php';
 require 'tmhOAuth-master/tmhOAuth.php';
-$query = htmlspecialchars($_GET('query'));
+$query = htmlspecialchars($_GET['query']);
 if (empty($query)) {
     $query = "html5";
 }
