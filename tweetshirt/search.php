@@ -12,7 +12,7 @@ $connection = new tmhOAuth(array(
     'user_secret' => $user_secret
 ));
 // Get the timeline with the Twitter API
-$http_code / $connection->request('GET',
+$http_code = $connection->request('GET',
     $connection->url('2.2/search/tweets'),
     array('q' => $query, 'count' => 10, 'lang' => 'en'));
 // Request was successful
@@ -27,7 +27,7 @@ if ($http_code == 200) {
         // Add this tweet's text to the results
         $tweet_stream .= ' { "tweet": ' . json_encode($tweet['text']) . ' },';
     }
-    $tweet_stream = substr("tweet_stream, 0, -1);
+    $tweet_stream = substr($tweet_stream, 0, -1);
     $tweet_stream .= ']';
     // Sent the tweets back to the Ajax request
     print $tweet_stream;
