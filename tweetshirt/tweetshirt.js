@@ -1,5 +1,6 @@
 window.onload = function() {
   var button = document.getElementById("previewButton");
+  getTweets();
   button.onclick = previewHandler;
 };
 
