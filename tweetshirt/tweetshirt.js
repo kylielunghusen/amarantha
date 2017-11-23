@@ -96,19 +96,18 @@ function getTweets() {
 function updateTweets(tweets) {
   var tweetsSelection = document.getElementById("tweets");
   console.log("tweetsSelection is " + JSON.stringify(tweetsSelection));
-  tweets = JSON.parse(tweets);
+  var tweets = JSON.parse(tweets);
   console.log("tweets is:\n" + JSON.stringify(tweets));
   for(var i = 0; i < tweets.length; i++) {
     var tweet = tweets[i];
     console.log("tweets[" + i + "] is " + JSON.stringify(tweets[i]));
     console.log("tweet is " + JSON.stringify(tweet));
+    console.log("tweet.text is " + tweet.text);
     var option = document.createElement("option");
-    console.log("option is " + JSON.stringify(option));
+    console.log("option is " + option);
     option.text = tweet.text;
     console.log("option.text is " + option.text);
-    console.log("option.text stringified is " + JSON.stringify(option.text));
     console.log("tweet.text is " + tweet.text);
-    console.log("tweet.text stringified is " + JSON.stringify(option.text));
     option.value = tweet.text.replace("\"", "'");
     
     tweetsSelection.options.add(option);
