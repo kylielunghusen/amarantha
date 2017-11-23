@@ -102,6 +102,7 @@ function updateTweets(tweets) {
     var tweet = tweets[i];
     console.log("tweets[" + i + "] is " + JSON.stringify(tweets[i]));
     console.log("tweet is " + JSON.stringify(tweet));
+    console.log("tweet variable type is " + typeof tweet);
     console.log("tweet.text is " + tweet.text);
     var option = document.createElement("option");
     console.log("option is " + option);
