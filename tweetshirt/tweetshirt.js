@@ -95,14 +95,14 @@ function getTweets() {
 
 function updateTweets(tweets) {
   var tweetsSelection = document.getElementById("tweets");
-  console.log("tweetsSelection is " + tweetsSelection);
+  console.log("tweetsSelection is " + JSON.stringify(tweetsSelection));
   tweets = JSON.parse(tweets);
-  console.log("tweets is:\n" + tweets)
+  console.log("tweets is:\n" + JSON.stringify(tweets));
   for(var i = 0; i < tweets.length; i++) {
     tweet = tweets[i];
-    console.log("tweets[" + i + "] is " + tweets[i]);
+    console.log("tweets[" + i + "] is " + JSON.stringify(tweets[i]));
     var option = document.createElement("option");
-    console.log("option is " + option);
+    console.log("option is " + JSON.stringify(option));
     option.text = tweet.text;
     option.value = tweet.text.replace("\"", "'");
     
