@@ -99,7 +99,7 @@ function updateTweets(tweets) {
   tweets = JSON.parse(tweets);
   console.log("tweets is:\n" + JSON.stringify(tweets));
   for(var i = 0; i < tweets.length; i++) {
-    tweet = tweets[i];
+    var tweet = tweets[i];
     console.log("tweets[" + i + "] is " + JSON.stringify(tweets[i]));
     console.log("tweet is " + JSON.stringify(tweet));
     var option = document.createElement("option");
