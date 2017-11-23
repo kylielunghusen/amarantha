@@ -101,9 +101,14 @@ function updateTweets(tweets) {
   for(var i = 0; i < tweets.length; i++) {
     tweet = tweets[i];
     console.log("tweets[" + i + "] is " + JSON.stringify(tweets[i]));
+    console.log("tweet is " + JSON.stringify(tweet));
     var option = document.createElement("option");
     console.log("option is " + JSON.stringify(option));
     option.text = tweet.text;
+    console.log("option.text is " + option.text);
+    console.log("option.text stringified is " + JSON.stringify(option.text));
+    console.log("tweet.text is " + tweet.text);
+    console.log("tweet.text stringified is " + JSON.stringify(option.text));
     option.value = tweet.text.replace("\"", "'");
     
     tweetsSelection.options.add(option);
