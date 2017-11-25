@@ -1,7 +1,8 @@
 window.onload = function() {
-  var button = document.getElementById("previewButton");
-  getTweets();
-  button.onclick = previewHandler;
+  var previewButton = document.getElementById("previewButton");
+  var searchButton = document.getElementById("searchButton");
+  searchButton.onclick = getTweets;
+  previewButton.onclick = previewHandler;
 };
 
 function previewHandler() {
