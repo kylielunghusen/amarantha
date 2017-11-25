@@ -101,10 +101,8 @@ function updateTweets(tweets) {
   console.log("tweets is:\n" + JSON.stringify(tweets));
   for(var i = 0; i < tweets.length; i++) {
     var tweet = tweets[i];
-    console.log("index is " + i);
     var option = document.createElement("option");
     option.text = tweet.tweet;
-    console.log("option.text is " + option.text);
     option.value = tweet.tweet.replace("\"", "'");
     
     tweetsSelection.options.add(option);
@@ -123,11 +121,11 @@ function drawText(canvas, context) {
   context.textAlign = "left";
   context.fillText("I saw this tweet", 20, 40);
   
-  // selectObj = document.getElementById("tweets");
-  // index = selectObj.selectedIndex;
-  // var tweetText = selectObj[index].value;
-  // context.font = "italic 1.2em serif";
-  // context.fillText(tweet, 30, 100);
+  selectObj = document.getElementById("tweets");
+  index = selectObj.selectedIndex;
+  var tweetText = selectObj[index].value;
+  context.font = "italic 1.2em serif";
+  context.fillText(tweet, 30, 100);
   
   context.font = "bold 1em sans-serif";
   context.textAlign = "right";
