@@ -101,18 +101,16 @@ function updateTweets(tweets) {
   console.log("tweets is:\n" + JSON.stringify(tweets));
   for(var i = 0; i < tweets.length; i++) {
     var tweet = tweets[i];
-    console.log("tweets[" + i + "] is " + JSON.stringify(tweets[i]));
-    console.log("tweet is " + JSON.stringify(tweet));
-    console.log("tweet.tweet is " + tweet.tweet);
+    console.log("index is " + i);
     var option = document.createElement("option");
-    console.log("option is " + JSON.stringify(option));
     option.text = tweet.tweet;
     console.log("option.text is " + option.text);
     option.value = tweet.tweet.replace("\"", "'");
     
     tweetsSelection.options.add(option);
   }
-  
+  console.log("final value of tweets is:\n" + JSON.stringify(tweets));
+  console.log("final value of tweetsSelection is:\n" + JSON.stringify(tweetsSelection));
   tweetsSelection.selectedIndex = 0;
 }
 
