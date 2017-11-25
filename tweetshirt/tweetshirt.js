@@ -125,7 +125,7 @@ function drawText(canvas, context) {
   index = selectObj.selectedIndex;
   var tweetText = selectObj[index].value;
   context.font = "italic 1.2em serif";
-  context.fillText(tweet, 30, 100);
+  context.fillText(tweetText, 30, 100);
   
   context.font = "bold 1em sans-serif";
   context.textAlign = "right";
