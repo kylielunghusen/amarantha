@@ -67,15 +67,12 @@ function getTweets() {
   var xhr = new XMLHttpRequest();
   // we're calling search.php and passing in a query string
   var url = "search.php?query=";
-  console.log("url is " + url);
   var query = document.getElementById("query").value;
-  console.log("query is " + query);
   if (!query) {
     query = "html5";
   }
   // we encode the query to handle any special characters properly
   url += encodeURIComponent(query);
-  console.log("encoded url is " + url);
         
   // this is the function that is called when the XHR request
   // to our search.php script is handled, and a response sent back
@@ -96,9 +93,7 @@ function getTweets() {
 
 function updateTweets(tweets) {
   var tweetsSelection = document.getElementById("tweets");
-  console.log("tweetsSelection is " + JSON.stringify(tweetsSelection));
   var tweets = JSON.parse(tweets);
-  console.log("tweets is:\n" + JSON.stringify(tweets));
   for(var i = 0; i < tweets.length; i++) {
     var tweet = tweets[i];
     var option = document.createElement("option");
@@ -107,8 +102,6 @@ function updateTweets(tweets) {
     
     tweetsSelection.options.add(option);
   }
-  console.log("final value of tweets is:\n" + JSON.stringify(tweets));
-  console.log("final value of tweetsSelection is:\n" + JSON.stringify(tweetsSelection));
   tweetsSelection.selectedIndex = 0;
 }
 
