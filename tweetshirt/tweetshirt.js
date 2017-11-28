@@ -3,6 +3,7 @@ window.onload = function() {
   var searchButton = document.getElementById("searchButton");
   searchButton.onclick = getTweets;
   previewButton.onclick = previewHandler;
+  makeImage();
 };
 
 function previewHandler() {
@@ -133,4 +134,12 @@ function drawBird(canvas, context) {
     context.drawImage(twitterBird, 20, 120, 70, 70);
   };
 }
+
+function makeImage() {
+  var canvas = document.getElementById("tshirtCanvas");
+  canvas.onclick = function() {
+    window.location = canvas.toDataURL("image/png");
+  }
+}
+
 
