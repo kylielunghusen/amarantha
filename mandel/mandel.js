@@ -19,17 +19,9 @@ function init() {
      workers.push(worker);
    }
    
-   window.onresize = function() {
-     resizeToWindow();
-   };
-   
    canvas.onclick = function(event) {
      handleClick(event.clientX, event.clientY);
    }
-   
-   window.onresize = function() {
-     resizeToWindow();
-   };
    
    startWorkers();
 }
@@ -53,9 +45,7 @@ function startWorkers() {
 }
 
 function processWork(worker, workerResults) {
-  if (workerResults.generation == generation) {
-    drawRow(workerResults);
-  }
+  drawRow(workerResults);
   reassignWorker(worker);
 }
 
@@ -83,18 +73,6 @@ function handleClick(x,y) {
   r_max = click_r + width/zoom;
   i_max = click_i - height/zoom;
   i_min = click_i + height/zoom;
-  
-  startWorkers();
-}
-
-function resizeToWindow() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  var width = ((i_max - i_min) * canvas.width = cavas.height);
-  var r_mid = (r_max + r_min) / 2;
-  r_min = r_mid - width/2;
-  r_max = r_mid _ width/2;
-  rowData = ctx.createimagData(canvas.width, 1);
   
   startWorkers();
 }
