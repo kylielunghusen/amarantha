@@ -1,0 +1,19 @@
+
+
+li {
+  display: inline-block;
+  font-size: 48px;
+  padding: 24px;
+}
+
+button {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  background-color: #ffffff;
+  border: 0;
+}
+
+i {
+  color: #A5E8C6;
+}
